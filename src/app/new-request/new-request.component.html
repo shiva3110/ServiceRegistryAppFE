@@ -1,0 +1,41 @@
+<mat-toolbar>
+    <span>Raise New Request</span>
+</mat-toolbar>
+<mat-divider></mat-divider>
+<div class="row">
+  <form class="example-form" [formGroup]="checkoutForm" >
+<mat-form-field class="example-full-width">
+  <mat-label>Request Type:</mat-label>
+  <mat-select formControlName="reqType">
+    <mat-option>None</mat-option>
+    <mat-option *ngFor="let requestType of rTypes" value="{{requestType.r_id}}">{{requestType.requests}}</mat-option>
+    
+  </mat-select>
+</mat-form-field>
+<mat-form-field>
+  <mat-label>Application:</mat-label>
+  <mat-select formControlName="appType" >
+    <mat-option>None</mat-option>
+    <mat-option *ngFor="let Apps of ApplicationList" value="{{Apps.a_id}}">{{Apps.application}}</mat-option>
+</mat-select>  
+</mat-form-field>
+<mat-divider></mat-divider>
+  <mat-form-field class="example-full-width">
+    <mat-label>Internal User</mat-label>
+    <input matInput  value="Yes" formControlName="InternalUser">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>User ID:</mat-label>
+    <mat-select  formControlName="userId">
+      <mat-option>None</mat-option>
+      <mat-option *ngFor="let user of users" value="{{user.u_id}}" >{{user.u_userame}}</mat-option>
+    </mat-select>  
+  </mat-form-field>
+  <mat-divider></mat-divider>
+  <mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button mat-button [mat-dialog-close]="true" (click)="onSubmit()" type="submit">Submit</button>
+  </mat-dialog-actions>
+</form>
+</div>  
+  
